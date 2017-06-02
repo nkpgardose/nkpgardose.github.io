@@ -1,0 +1,209 @@
+:root {
+  --blue: #64b5f6;
+  --red: #f06292;
+  --green: #81c784;
+  --yellow: #fff176;
+  --black: #212121;
+  --gray: rgba(206, 206, 206, 0.50);
+}
+
+/* Always hide element with hidden attribute. */
+*[hidden] {
+  display: none;
+}
+
+/* 
+  1. Show text content immediately instead of waiting for the desired font to load
+  2. Take the entire screen.
+*/
+html,
+body {
+  font-family: "Helvetica", "Arial", sans-serif; /* 1 */
+  width: 100%; /* 2 */
+  color: var(--black);
+}
+
+html {
+  height: 100%; /* 2 */
+}
+
+body {
+  min-height: 100%; /* 2 */
+  margin: 0;
+}
+
+/* Type */
+.TextBody {
+  font-weight: 400;
+  font-family: "Quicksand", "Helvetica", "Arial", sans-serif;
+  font-size: 100%;
+  line-height: 1.6rem;
+}
+
+.Subheading,
+.Headline {
+  font-weight: 500;
+  font-family: "Quicksand", "Helvetica", "Arial", sans-serif;
+}
+
+.Subheading {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.Title {
+  font-size: 1.25rem;
+  line-height: 1.4375rem;
+}
+
+.Headline {
+  font-size: 1.25rem;
+  line-height: 1.5625rem;
+}
+
+.Disp1 {
+  font-size: 1.5rem;
+  line-height: 1.875rem;
+}
+
+.Disp2 {
+  font-size: 2.25rem;
+  line-height: 2.8125rem;
+}
+
+.Disp3 {
+  font-size: 3rem;
+  line-height: 3.75rem;
+}
+
+.Disp4 {
+  font-size: 4rem;
+  line-height: 5rem;
+}
+
+.Disp1,
+.Disp2,
+.Disp3,
+.Disp4,
+.Title {
+  font-weight: 700;
+  font-family: "Quicksand", "Helvetica", "Arial", sans-serif;
+}
+
+.Disp1,
+.Disp2,
+.Disp3,
+.Disp4,
+.Subheading,
+.Title,
+.Headline,
+.TextBody {
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+
+/* Adding colorful underline */
+.Line {
+  position: relative;
+  z-index: 1;
+}
+
+.Line::after {
+  content: " ";
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+  height: 10px;
+  width: 110%;
+  background-color: var(--black);
+  border-radius: 10px;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.Line.primary::after {
+  background-color: var(--blue);
+}
+
+.Line.alert::after {
+  background-color: var(--red);
+}
+
+.Line.success::after {
+  background-color: var(--green);
+}
+
+.Line.warning::after {
+  background-color: var(--yellow);
+}
+
+.Line.thin::after {
+  height: 6px;
+}
+
+.Linebr {
+  border: 0;
+  height: 10px;
+  border-radius: 10px;
+  background-color: var(--green);
+  width: 75%;
+  max-width: 1024px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Containers */
+.Drama {
+  display: flex;
+  flex-flow: column nowrap;
+  box-sizing: border-box;
+  padding: 16px;
+  min-height: 75vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.Bubble {
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: var(--gray);
+  text-align: left;
+  padding: 16px;
+  border-radius: 1.6rem;
+  width: 75%;
+  max-width: 1024px;
+}
+
+/* Spacing */
+.TextSpace {
+  margin: 8px;
+}
+
+.TextSpace.md {
+  margin: 16px;
+}
+
+.TextSpace.lg {
+  margin: 32px;
+}
+
+/* Utilities */
+.uTextCenter {
+  text-align: center;
+}
+
+/* Adding movements on an element */
+@keyframes loadWidth {
+  0% {
+    width: 0;
+  }
+}
+
+.Anime.loadWidth.Line:after {
+  animation-name: loadWidth;
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
