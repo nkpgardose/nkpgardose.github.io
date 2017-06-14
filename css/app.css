@@ -38,6 +38,7 @@ body {
   vertical-align: middle;
 }
 
+.Heading .emoji,
 .Subheading .emoji {
   width: 20px;
 }
