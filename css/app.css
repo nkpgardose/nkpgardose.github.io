@@ -32,6 +32,16 @@ body {
   margin: 0;
 }
 
+/* Twemoji */
+.emoji {
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.Subheading .emoji {
+  font-size: 20px;
+}
+
 /* Type */
 .TextBody {
   font-weight: 400;
