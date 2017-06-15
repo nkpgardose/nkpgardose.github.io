@@ -34,13 +34,13 @@ body {
 
 /* Twemoji */
 .emoji {
-  margin: 0 10px;
+  margin: 0 5px;
   vertical-align: middle;
 }
 
 .Headline .emoji,
 .Subheading .emoji {
-  width: 20px;
+  width: 16px;
 }
 
 /* Type */
