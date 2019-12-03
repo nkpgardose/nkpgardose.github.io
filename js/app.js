@@ -1,12 +1,1 @@
-twemoji.parse(document.body, {
-  callback: function(icon, options, variant) {
-    switch ( icon ) {
-      case 'a9':      // © copyright
-      case 'ae':      // ® registered trademark
-      case '2122':    // ™ trademark
-        return false;
-    }
-    return ''.concat(options.base, options.size, '/', icon, options.ext);
-  }
-});
-
+console.log("Feel free to visit my github page: https://github.com/nkpgardose. Cheers 🍻", "color: rgb(240, 98, 146); font-size: 24px");
