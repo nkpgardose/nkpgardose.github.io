@@ -188,6 +188,7 @@ body {
   padding: 16px;
   border-radius: 1.6rem;
   width: 75%;
+  min-width: 330px;
   max-width: 1024px;
 }
 
