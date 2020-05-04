@@ -1,13 +1,15 @@
 :root {
-  --blue: #64b5f6;
-  --red: #f06292;
-  --green: #81c784;
-  --yellow: #fff176;
+  --bg: #0dbea7;
   --black: #212121;
-  --gray: rgba(206, 206, 206, 0.50);
-  --font: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --brown: #87694a;
+  --light-brown: #fffae1;
+  --light-brown-dim: rgba(255, 250, 225, 0.95);
+  --hotpink: #ff79a5;
+  --size: 1em;
+  --font: "Arial Rounded MT Bold", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
 }
 
 /* Always hide element with hidden attribute. */
@@ -15,20 +17,20 @@
   display: none;
 }
 
-/* 
+/*
   1. Show text content immediately instead of waiting for the desired font to load
   2. Take the entire screen.
+  3. Source: http://weblog.west-wind.com/posts/2015/Jan/12/main-HTML5-Tag-not-working-in-Internet-Explorer-91011
 */
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; /* 1 */
+  font-family: var(--font);
   width: 100%; /* 2 */
   color: var(--black);
 }
 
 html {
+  font-size: var(--size, 1em);
   height: 100%; /* 2 */
 }
 
@@ -37,190 +39,145 @@ body {
   margin: 0;
 }
 
-/* Twemoji */
-.emoji {
-  margin: 0 5px;
-  vertical-align: middle;
+/* 3 */
+main {
+  display: block;
 }
 
-.Headline .emoji,
-.Subheading .emoji {
-  width: 16px;
+a {
+  color: var(--hotpink);
+  text-decoration: none;
 }
 
-/* Type */
-.TextBody {
-  font-weight: 400;
-  font-family: var(--font);
-  font-size: 100%;
-  line-height: 1.6rem;
+a:hover,
+a:focus {
+  outline: dashed var(--bg);
 }
 
-.Subheading,
-.Headline {
-  font-weight: 500;
-  font-family: var(--font);
-}
-
-.Subheading {
-  font-size: 1rem;
-  line-height: 1.25rem;
-}
-
-.Title {
-  font-size: 1.25rem;
-  line-height: 1.4375rem;
-}
-
-.Headline {
-  font-size: 1.25rem;
-  line-height: 1.5625rem;
-}
-
-.Disp1 {
-  font-size: 1.5rem;
-  line-height: 1.875rem;
-}
-
-.Disp2 {
-  font-size: 2.25rem;
-  line-height: 2.8125rem;
-}
-
-.Disp3 {
-  font-size: 3rem;
-  line-height: 3.75rem;
-}
-
-.Disp4 {
-  font-size: 4rem;
-  line-height: 5rem;
-}
-
-.Disp1,
-.Disp2,
-.Disp3,
-.Disp4,
-.Title {
-  font-weight: 700;
-  font-family: var(--font);
-}
-
-.Disp1,
-.Disp2,
-.Disp3,
-.Disp4,
-.Subheading,
-.Title,
-.Headline,
-.TextBody {
-  margin: 0 0 8px 0;
-  padding: 0;
-}
-
-/* Adding colorful underline */
-.Line {
-  position: relative;
-  z-index: 1;
-}
-
-.Line::after {
-  content: " ";
-  position: absolute;
-  bottom: 7%;
-  left: 50%;
-  height: 10px;
-  width: 110%;
-  background-color: var(--black);
-  border-radius: 10px;
-  transform: translateX(-50%);
-  z-index: -1;
-}
-
-.Line.primary::after {
-  background-color: var(--blue);
-}
-
-.Line.alert::after {
-  background-color: var(--red);
-}
-
-.Line.success::after {
-  background-color: var(--green);
-}
-
-.Line.warning::after {
-  background-color: var(--yellow);
-}
-
-.Line.thin::after {
-  height: 6px;
-}
-
-.Linebr {
-  border: 0;
-  height: 10px;
-  border-radius: 10px;
-  background-color: var(--green);
-  width: 75%;
-  max-width: 1024px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* Containers */
 .Drama {
+  background-color: var(--bg);
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 0.5em;
+  width: 100%;
   display: flex;
   flex-flow: column nowrap;
-  box-sizing: border-box;
-  padding: 16px;
-  min-height: 75vh;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
 }
 
-.Bubble {
+.ChatBubble {
+  font-family: var(--font);
+  position: relative;
+  display: none;
+  opacity: 0;
+  transform-origin: bottom left;
+}
+
+.ChatBubble.show {
   display: inline-block;
-  box-sizing: border-box;
-  background-color: var(--gray);
-  text-align: left;
-  padding: 16px;
-  border-radius: 1.6rem;
-  width: 75%;
-  min-width: 330px;
-  max-width: 1024px;
+  animation-duration: 0.6s;
+  animation-name: pop;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
-/* Spacing */
-.TextSpace {
-  margin: 8px;
+.ChatBubble.notif > .main::after {
+  content: " ";
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--hotpink);
+  border: 3px solid var(--light-brown);
+  padding: 0.25em;
+  top: 0;
+  right: 0;
+  animation-duration: 3s;
+  animation-name: signal;
+  animation-iteration-count: infinite;
 }
 
-.TextSpace.md {
-  margin: 16px;
+.ChatBubble > .name {
+  background-color: var(--hotpink);
+  border-radius: 0.75em;
+  color: var(--light-brown-dim);
+  font-size: 0.75em;
+  padding: 0.25em 1em;
+  position: absolute;
+  z-index: 1;
+  transform: translateY(-50%);
 }
 
-.TextSpace.lg {
-  margin: 32px;
+.ChatBubble > .main {
+  background-color: var(--light-brown);
+  border-radius: 1.2em;
+  display: inline-block;
+  margin-bottom: 1em;
+  margin-left: 0.5em;
+  padding: 0.5em 2em;
+  position: relative;
+  animation-duration: 10s;
+  animation-name: floatAndJiggle;
+  animation-iteration-count: infinite;
 }
 
-/* Utilities */
-.uTextCenter {
-  text-align: center;
+.ChatBubble > .main > .text {
+  font-size: 1em;
+  font-weight: normal;
+  color: var(--brown);
+  margin: 0;
 }
 
-/* Adding movements on an element */
-@keyframes loadWidth {
-  0% {
-    width: 0;
+@media only screen and (min-width: 47.875em) {
+  .Drama {
+  }
+
+  .ChatBubble > .main > .text {
+    font-size: 1.5em;
   }
 }
 
-.Anime.loadWidth.Line:after {
-  animation-name: loadWidth;
-  animation-duration: 0.8s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  animation-fill-mode: forwards;
+@keyframes pop {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.9, 1.05);
+  }
+  75% {
+    transform: scale(1.05, 0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
+@keyframes floatAndJiggle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -0.1em) skew(-0.5deg, 0);
+  }
+  50% {
+    transform: translate(0, -0.25em) skew(0.5deg, -1deg) scaleY(1.025);
+  }
+  75% {
+    transform: translate(0, -0.1em) skew(-0.5deg, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes signal {
+  0% {
+    opacity: 70%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 70%;
+  }
+}
