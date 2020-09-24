@@ -7,7 +7,7 @@ console.log(
 // notifChat.classList.remove("notif")
 
 function main(sleep) {
-  [1, 2, 3, 5, 6, 7, 9, 10].forEach(async (val) => {
+  [1, 2, 3, 4, 6, 7, 8, 10].forEach(async (val) => {
     await sleep(1500 * val);
     const elem = document.querySelector(`[data-js-chat-${val}]`);
     const notifElem = document.getElementsByClassName("notif")[0];
